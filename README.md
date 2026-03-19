@@ -4,9 +4,9 @@ Single-file hover-to-play Quran reference linker for Islamic articles, blogs, an
 
 ## Live links
 
-- Hosted script: `https://shakirhajwane.github.io/HoverAayaat/quran-ref-linker.min.js`
-- Live docs: `https://shakirhajwane.github.io/HoverAayaat/`
-- Live demo: `https://shakirhajwane.github.io/HoverAayaat/demo/`
+- Hosted script: `https://shakirhajwane.github.io/Quran-Reference-Linker/quran-ref-linker.min.js`
+- Live docs: `https://shakirhajwane.github.io/Quran-Reference-Linker/`
+- Live demo: `https://shakirhajwane.github.io/Quran-Reference-Linker/demo/`
 
 ## Use in your project
 
@@ -15,7 +15,7 @@ Add this once in your site layout or page `<head>`:
 ```html
 <script
   defer
-  src="https://shakirhajwane.github.io/HoverAayaat/quran-ref-linker.min.js"
+  src="https://shakirhajwane.github.io/Quran-Reference-Linker/quran-ref-linker.min.js"
 ></script>
 ```
 
@@ -37,7 +37,7 @@ The widget will scan eligible content, turn those references into interactive in
 
 Use the public GitHub Pages demo to sanity-check the hosted widget:
 
-`https://shakirhajwane.github.io/HoverAayaat/demo/`
+`https://shakirhajwane.github.io/Quran-Reference-Linker/demo/`
 
 This demo is using the hosted GitHub Pages bundle, not a local dev build.
 
