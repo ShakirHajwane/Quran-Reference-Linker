@@ -37,11 +37,11 @@ jobs:
       - name: Install dependencies
         run: |
           for attempt in 1 2 3; do
-            npm ci && exit 0
+            npm install --no-fund --no-audit && exit 0
             if [ "$attempt" -eq 3 ]; then
               exit 1
             fi
-            echo "npm ci failed on attempt $attempt. Retrying in 5 seconds..."
+            echo "npm install failed on attempt $attempt. Retrying in 5 seconds..."
             sleep 5
           done
 
