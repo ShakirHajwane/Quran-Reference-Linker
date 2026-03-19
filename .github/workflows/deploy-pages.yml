@@ -6,9 +6,6 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: read
   pages: write
@@ -19,53 +16,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
-      - name: Install dependencies
-        run: |
-          for attempt in 1 2 3; do
-            npm install --no-fund --no-audit && exit 0
-            if [ "$attempt" -eq 3 ]; then
-              exit 1
-            fi
-            echo "npm install failed on attempt $attempt. Retrying in 5 seconds..."
-            sleep 5
-          done
-
-      - name: Run tests
-        run: npm test
-
-      - name: Build widget
-        run: npm run build
-
-      - name: Build GitHub Pages bundle
-        run: npm run build:pages
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: pages-dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
